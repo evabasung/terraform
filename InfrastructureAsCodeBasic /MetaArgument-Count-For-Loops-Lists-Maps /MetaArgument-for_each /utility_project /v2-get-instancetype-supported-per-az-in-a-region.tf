@@ -1,5 +1,7 @@
 # Check if that respective Instance Type is supported in that Specific Region in list of availability Zones
 # Get the List of Availability Zones in a Particular region where that respective Instance Type is supported
+#output result with map that key and value , eg us-east-1a = t3micro
+
 # Datasource
 data "aws_ec2_instance_type_offerings" "my_ins_type2" {
   for_each = toset([ "us-east-1a", "us-east-1b", "us-east-1e" ])  #
@@ -22,7 +24,7 @@ output "output_v2_1" {
   #value = data.aws_ec2_instance_type_offerings.my_ins_type1.instance_types
   value = toset([for t in data.aws_ec2_instance_type_offerings.my_ins_type2: t.instance_types])   
 }
-
+# toset function process ec2_instance_type_offerings output to set
 #Output-2
 # Create a Map with Key as Availability Zone and value as Instance Type supported
 # Map display the key and value like az us-east-1b = t3micro in output
