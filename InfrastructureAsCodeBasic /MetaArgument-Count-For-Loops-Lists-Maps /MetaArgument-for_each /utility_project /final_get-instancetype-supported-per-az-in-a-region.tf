@@ -42,7 +42,8 @@ output "output_v3_2" {
   value = {
     for az, details in data.aws_ec2_instance_type_offerings.my_ins_type: 
     az => details.instance_types if length(details.instance_types) != 0 }
-     # if length(details.instance_types) != 0 , if the return exist status of instance_type is not 0 which mean t3micro is not supported exclude
+     # The output ["t3.micro"] is  equal to 0 so no ouput is not equal 0 then it get excluded
+        
      
 }
 
