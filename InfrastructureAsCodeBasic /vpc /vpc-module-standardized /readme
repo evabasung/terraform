@@ -1,1 +1,21 @@
 terraform.tfvars has high priority. Values define in terraform.tfvars overide default variable define in generic variable file
+terraform.tfvars is define as key and value
+
+Local values enable you to pass  complex expresions and avoid code repetitions, moderate use , they ref modules, and other variables
+
+#**************************
+# Define Local Values in Terraform
+#These local values will tag all resources created.
+
+locals {
+  owners = var.business_divsion                    # This ref variable "business_divsion" variable in the generic varible file
+  environment = var.environment                     #This ref the "environment" variable in the generic varible file
+  name = "${var.business_divsion}-${var.environment}"  # calling  both variable for name assignments eg HR-dev
+  #name = "${local.owners}-${local.environment}"        # could also be define as in top level block
+  common_tags = {
+    owners = local.owners                               # This call  the var.business_divsion eg HR
+    environment = local.environment                     # This call  the var.environment  eg dev
+  }
+} 
+
+#*******************
