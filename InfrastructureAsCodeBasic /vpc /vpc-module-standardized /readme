@@ -1,0 +1,1 @@
+terraform.tfvars has high priority. Values define in terraform.tfvars overide default variable define in generic variable file
