@@ -29,15 +29,15 @@ module "vpc" {
   enable_dns_support = true
 
   public_subnet_tags = {
-    Type = "public-subnets"
+    Name = "public-subnets"
   }
 
   private_subnet_tags = {
-    Type = "private-subnets"
+    Name = "private-subnets"
   }
 
   database_subnet_tags = {
-    Type = "database-subnets"
+    Name = "database-subnets"
   }
 
   tags = {
