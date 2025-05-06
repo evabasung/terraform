@@ -19,3 +19,5 @@ locals {
 } 
 
 #*******************
+vpc.auto.tfvars  # vpc variables can also be define in vpc.auto.tfvars , with the auto tag sepcify in the file name vpc."auto".tfvars , no need to 
+to run terraform apply -var-file=vpc.tfvars at rune time
